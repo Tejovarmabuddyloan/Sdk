@@ -3,7 +3,9 @@ plugins {
     id("maven-publish")
     id("org.jetbrains.kotlin.android")
 }
-group = "com.github.Tejovarmabuddyloan" // replace with your GitHub username
+
+
+group = "com.example.test_sdk" // replace with your GitHub username
 version = "1.0.0"
 android {
     namespace = "com.example.test_sdk"
@@ -42,4 +44,16 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            groupId = "com.example.test_sdk"
+            artifactId = "Test_sdk"
+            version = "1.0.0"
+
+            from(components["release"])
+        }
+    }
 }
